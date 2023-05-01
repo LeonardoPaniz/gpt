@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Venda de cursos</title>
+    <style>
+      h3, p, h1, h2{
+        color: #ffffff;
+      }
+      body {
+        background-color: #0A4D68;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        background-color: #088395;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+      }
+      h1 {
+        margin: 0;
+      }
+      main {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin: 20px;
+      }
+      h2 {
+        text-align: center;
+        width: 100%;
+      }
+      div {
+        background-color: #05BFDB;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        margin: 20px;
+        padding: 20px;
+        text-align: center;
+        width: 30%;
+      }
+      img {
+        max-width: 100%;
+        margin-bottom: 10px;
+      }
+      button {
+        background-color: #333;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+        padding: 10px 20px;
+        transition: background-color 0.3s ease;
+      }
+      button:hover {
+        background-color: #444;
+      }
+      footer {
+        background-color: #088395;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+      }
+
+            /* Estilos do modal */
+            .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+      }
+      .modal-content {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        margin: 10% auto;
+        padding: 20px;
+        text-align: center;
+        width: 50%;
+      }
+      .modal-close {
+			position: absolute;
+			top: 5px;
+			right: 10px;
+			font-size: 28px;
+			font-weight: bold;
+			color: #aaa;
+			cursor: pointer;}
+
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+      .close:hover, .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .modal_txt{
+        color: #000000;
+        display: block;
+    margin-block-start: 0.6em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+      }
+      .modal_input{
+        border-radius: 2px;
+      }
+
+      /* modal input*/
+      input[class="modal_input"] {
+			border: none;
+			border-radius: 10px;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+			font-size: 16px;
+			padding: 10px 15px;
+			background-color: #f5f5f5;
+			width: 250px;
+			outline: none;
+			transition: box-shadow 0.3s ease-in-out;
+		}
+
+		input[class="modal_input"]:focus {
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+		}
+
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Cursos Online</h1>
+    </header>
+    <main>
+      <h2>Confira nossos cursos disponíveis</h2>
+      <div>
+        <h3>Curso de Programação em Java</h3>
+        <img src="./assets/java.jpg" alt="Curso de Programação em Java">
+        <p>Descrição: Aprenda a programar em Java e desenvolva aplicações complexas.</p>
+        <p>Duração: 6 meses</p>
+        <p>Preço: R$ 1.200,00</p>
+        <button onclick="openModal()">Comprar</button>
+      </div>
+      <div>
+        <h3>Curso de Design Gráfico</h3>
+        <img src="./assets/desing grafico.jpg" alt="Curso de Design Gráfico">
+        <p>Descrição: Aprenda a criar designs incríveis e impressione seus clientes.</p>
+        <p>Duração: 3 meses</p>
+        <p>Preço: R$ 600,00</p>
+        <button onclick="openModal()">Comprar</button>
+      </div>
+      <div>
+        <h3>Curso de Marketing Digital</h3>
+        <img src="./assets/Marketing-Digital.jpg" alt="Curso de Marketing Digital">
+        <p>Descrição: Aprenda a promover seu negócio na internet e aumente suas vendas.</p>
+        <p>Duração: 4 meses</p>
+        <p>Preço: R$ 800,00</p>
+        <button onclick="openModal()">Comprar</button>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; 2023 Cursos Online. Todos os direitos reservados.</p>
+    </footer>
+      <!-- Modal -->
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal()">&times;</span>
+          <h2 class="modal_txt">Concluir venda</h2>
+          <p class="modal_txt">Por favor, confirme os dados da venda:</p>
+          <p class="modal_txt">Curso: <span id="curso"></span></p>
+          <p class="modal_txt"><span id="preco"></span></p>
+          <form>
+            <label class="modal_txt" for="nome">Nome completo:</label><br>
+            <input class="modal_input" type="text" id="nome" name="nome" required><br>
+            <label class="modal_txt" for="email">E-mail:</label><br>
+            <input class="modal_input" type="email" id="email" name="email" required><br><br>
+            <button type="submit" onclick="fecharModalAgradecimento()" >Confirmar</button>
+
+          </form>
+        </div>
+      </div>
+
+      <!-- Modal de agradecimento -->
+	<div id="modal-agradecimento" class="modal">
+		<div class="modal-content">
+			<span class="modal-close" onclick="fecharModalAgradecimento()">&times;</span>
+			<h2>Obrigado pela sua compra!</h2>
+			<p>Seu pagamento foi confirmado com sucesso.</p>
+		</div>
+	</div>
+
+      <!-- Scripts -->
+      <script>
+        // Função para abrir o modal
+        function openModal() {
+          var modal = document.getElementById("myModal");
+          var curso = event.target.parentNode.querySelector("h3").textContent;
+          var preco = event.target.parentNode.querySelector("p:last-of-type").textContent;
+          document.getElementById("curso").textContent = curso;
+          document.getElementById("preco").textContent = preco;
+          modal.style.display = "block";
+        }
+        // Função para fechar o modal
+        function closeModal() {
+          console.log("caralho 1")
+          var modal = document.getElementById("myModal");
+          modal.style.display = "none";
+          this.mostrarModalAgradecimento();
+        }
+        // Fechar o modal quando o usuário clicar fora dele
+        window.onclick = function(event) {
+          var modal = document.getElementById("myModal");
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+          
+          // Função para mostrar o modal
+		function mostrarModalAgradecimento() {
+      console.log("caralho 2")
+			var modal = document.getElementById("modal-agradecimento");
+			modal.style.display = "block";
+		}
+
+		// Função para fechar o modal
+		function fecharModalAgradecimento() {
+			var modal = document.getElementById("modal-agradecimento");
+			modal.style.display = "none";
+		}
+      </script>
+    </body>
+  </html>
+  

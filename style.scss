@@ -1,0 +1,54 @@
+// Define variáveis
+$primary-color: #008080;
+$secondary-color: #ff7f50;
+
+// Define estilos gerais
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: $primary-color;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// Define estilos para o cabeçalho
+header {
+  background-color: #fff;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  nav {
+    ul {
+      display: flex;
+      justify-content: flex-end;
+      margin: 0;
+      padding: 0;
+
+      li {
+        margin-left: 20px;
+
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
+
+// Define estilos para a seção hero
+.hero-section {
+  background-color: $primary-color;
+  color: #fff;
+  padding: 100px 20px;
+  text-align: center;
+}
